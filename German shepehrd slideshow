@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+
+<body onload="slideshow();">
+    <button onclick="play();">Play</button>
+    <button onclick="stop();">Stop</button>
+    <button onclick="toggle();">Show/Hide</button>
+  
+
+    <br />
+
+
+    <img id="pics" style="width:50%;" />
+   
+    <script>
+
+        var stats;
+
+        function play() {
+            stats = setTimeout("slideshow()", 2000);
+        }
+
+        function stop() {
+            clearTimeout(stats);
+        }
+
+        function toggle() {
+            var x = document.getElementById("pics");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+
+        var images = new Array(
+            "https://i.ytimg.com/vi/oGoPUw0YBAg/maxresdefault.jpg",
+            "http://images2.fanpop.com/images/photos/8100000/German-Shepard-german-shepherds-8119240-1024-768.jpg",
+            "https://vetstreet.brightspotcdn.com/dims4/default/7dfaa28/2147483647/crop/0x0%2B0%2B0/resize/645x380/quality/90/?url=https%3A%2F%2Fvetstreet-brightspot.s3.amazonaws.com%2F59%2Fbb7610a80711e0a0d50050568d634f%2Ffile%2Fgerman-shepherd-5-645mk070411.jpg",
+            "https://usercontent1.hubstatic.com/12878348_f520.jpg",
+            "http://www.insidedogsworld.com/wp-content/uploads/2017/06/German-Shepherd-Standard-Coat-GSC-1000x575-1-1-1-1.jpg"
+            );
+
+
+        var i = 0;
+        function slideshow() {
+            if (i == images.length) {
+                i = 0;
+            }
+            document.getElementById("pics").src = images[i];
+            i++;
+            stats = setTimeout("slideshow()", 2000);
+        }
+    </script>
+</body>
+</html>
